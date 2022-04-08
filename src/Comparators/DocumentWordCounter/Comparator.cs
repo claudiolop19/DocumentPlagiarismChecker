@@ -28,6 +28,7 @@ namespace DocumentPlagiarismChecker.Comparators.DocumentWordCounter
         /// <param name="settings">The settings instance that will use the comparator.</param>
         /// <returns></returns>
         public Comparator(string fileLeftPath, string fileRightPath, Settings settings): base(fileLeftPath, fileRightPath, settings){
+            //Comentario Entornos Ejercicio 2
         }  
         
         /// <summary>
@@ -35,7 +36,7 @@ namespace DocumentPlagiarismChecker.Comparators.DocumentWordCounter
         /// </summary>
         /// <returns>The matching's results.</returns>
         public override ComparatorMatchingScore Run(){
-            //Counting the words appearences for each document (left and right).
+            //Contar las apariciones de palabras para cada documento (izquierda y derecha).
             Dictionary<string, int[]> counter = new Dictionary<string, int[]>();
             foreach(string word in this.Left.WordAppearances.Select(x => x.Key)){
                 if(!counter.ContainsKey(word)) counter.Add(word, new int[]{0, 0});
@@ -47,7 +48,7 @@ namespace DocumentPlagiarismChecker.Comparators.DocumentWordCounter
                 counter[word][1] += Right.WordAppearances[word];
             }
 
-            //Counting sample file word appearences, in order to ignore those from the previous files.
+            //Contar las apariciones de palabras de archivos de muestra, para ignorar las de los archivos anteriores.
             if(this.Sample != null){
                  foreach(string word in this.Sample.WordAppearances.Select(x => x.Key)){
                     if(counter.ContainsKey(word)){
